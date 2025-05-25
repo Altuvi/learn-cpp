@@ -2,10 +2,17 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build C++",
+      "label": "build C++ (Debug)",
       "type": "shell",
       "command": "g++",
       "args": [
+        "-pedantic-errors",
+        "-Wall",
+        // "-Weffc++",
+        "-Wextra",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-ggdb",
         "-g",
         "${file}",
         "-o",
@@ -16,7 +23,29 @@
         "isDefault": true
       },
       "problemMatcher": ["$gcc"],
-      "detail": "Compiled C++ file"
+      "detail": "Debug build with strict C++ standard and warnings"
+    },
+    {
+      "label": "build C++ (Release)",
+      "type": "shell",
+      "command": "g++",
+      "args": [
+        "-pedantic-errors",
+        "-Wall",
+        // "-Weffc++",
+        "-Wextra",
+        "-Wconversion",
+        "-Wsign-conversion",
+        "-O2",
+        "-DNDEBUG",
+        "-Werror",
+        "${file}",
+        "-o",
+        "${fileDirname}/${fileBasenameNoExtension}"
+      ],
+      "group": "build",
+      "problemMatcher": ["$gcc"],
+      "detail": "Release build with optimizations and warnings as errors"
     }
   ]
 }
