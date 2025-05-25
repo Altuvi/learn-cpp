@@ -2,15 +2,13 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build and run C++",
+      "label": "build C++",
       "type": "shell",
       "command": "g++",
       "args": [
         "-g",
         "${file}",
         "-o",
-        "${fileDirname}/${fileBasenameNoExtension}",
-        "&&",
         "${fileDirname}/${fileBasenameNoExtension}"
       ],
       "group": {
@@ -18,7 +16,7 @@
         "isDefault": true
       },
       "problemMatcher": ["$gcc"],
-      "detail": "Compiled and ran C++ file"
+      "detail": "Compiled C++ file"
     }
   ]
 }
